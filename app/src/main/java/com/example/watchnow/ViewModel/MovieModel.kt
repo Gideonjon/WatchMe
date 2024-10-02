@@ -15,7 +15,11 @@ class MovieModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-repository.getMovieList(state.page)
+            val response = repository.getMovieList(state.page)
+            state = state.copy(
+                movies = response.body()!!.data
+            )
+
 
         }
     }
