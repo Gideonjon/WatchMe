@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.watchnow.ViewModel.MovieModel
+import com.example.watchnow.navigation.Navigation
 import com.example.watchnow.ui.theme.WatchNowTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,17 +24,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WatchNowTheme {
-                Surface (
+                Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
 
-                ){
+                ) {
 
                     val movieViewModel = viewModel<MovieModel>()
                     val state = movieViewModel.state
 
+                    Navigation()
 
-                    Text(text = state.movies.toString())
+
                 }
 
             }
